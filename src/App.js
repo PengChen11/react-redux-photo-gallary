@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './component/header.js';
+import Footer from './component/footer.js';
+import Carousel from './component/carousel.js';
+import {useSelector} from 'react-redux';
 
-function App() {
+export default function App() {
+  const dayMode = useSelector(state => state.settingsStore.dayMode);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={dayMode? "bg-info":"bg-dark"}>
+      <Header />
+      <main >
+        <Carousel />
+      </main>
+      <Footer />
     </div>
   );
 }
-
-export default App;
